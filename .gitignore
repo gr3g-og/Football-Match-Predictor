@@ -1,0 +1,39 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Excel and dataset files
+*.xlsx
+*.xls
+*.csv
+
+# Pickle models / scalers
+*.pkl
+*.pickle
+
+# VSCode / IDE configs
+.vscode/
+.idea/
+
+# Backup files
+*.bak
+*.tmp
