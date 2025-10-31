@@ -22,79 +22,79 @@ The project includes a full pipeline for data preparation, model training, and p
 - Install dependencies:  
 ```bash
 pip install pandas openpyxl scikit-learn joblib matplotlib seaborn tqdm
-🔄 Project Workflow
-1️⃣ Training the Model (run only when new historical data is added)
-Step 1: Prepare the dataset
+```
 
-bash
-Copy code
+---
+
+## 🔄 Project Workflow
+
+### 1️⃣ Training the Model (run only when new historical data is added)
+
+#### Step 1: Prepare the dataset
+```bash
 python prepare_predictions.py
-Processes RawPrediction.xlsx → creates enhanced_dataset.csv.
+```
+Processes `RawPrediction.xlsx` → creates `enhanced_dataset.csv`.
 
-Step 2: Create the scaler
-
-bash
-Copy code
+#### Step 2: Create the scaler
+```bash
 python create_scaler.py
-Fits a scaler and saves scaler.pkl.
+```
+Fits a scaler and saves `scaler.pkl`.
 
-Step 3: Train the model
-
-bash
-Copy code
+#### Step 3: Train the model
+```bash
 python train_model.py
-Performs hyperparameter tuning
+```
+- Performs hyperparameter tuning  
+- Saves model → `football_model_optimized.pkl`  
+- Saves evaluation → `model_evaluation.txt`
 
-Saves model → football_model_optimized.pkl
+---
 
-Saves evaluation → model_evaluation.txt
+### 2️⃣ Making Predictions
 
-2️⃣ Making Predictions
-Step 1: Add new matches → fill in new_matches.xlsx.
+#### Step 1: Add new matches → fill in `new_matches.xlsx`.
 
-Step 2: Run predictor
-
-bash
-Copy code
+#### Step 2: Run predictor
+```bash
 python predict_matches.py
-Exports results → predicted_results.xlsx (with color-coded outcomes).
+```
+Exports results → `predicted_results.xlsx` (with color-coded outcomes).
 
-3️⃣ Alternative Method: Pattern-based Prediction
-Step 1: Ensure new_matches.xlsx is filled.
+---
 
-Step 2: Run pattern matcher
+### 3️⃣ Alternative Method: Pattern-based Prediction
 
-bash
-Copy code
+#### Step 1: Ensure `new_matches.xlsx` is filled.
+
+#### Step 2: Run pattern matcher
+```bash
 python pattern_predict.py
-Exports results → pattern_matches.xlsx.
+```
+Exports results → `pattern_matches.xlsx`.
 
-📂 File Descriptions
-train_model.py → Trains and evaluates Random Forest with tuning.
+---
 
-prepare_predictions.py → Processes raw Excel data → feature engineering → enhanced_dataset.csv.
+## 📂 File Descriptions
 
-create_scaler.py → Fits & saves scaler (scaler.pkl).
+| File | Description |
+|------|--------------|
+| `train_model.py` | Trains and evaluates Random Forest with tuning. |
+| `prepare_predictions.py` | Processes raw Excel data → feature engineering → `enhanced_dataset.csv`. |
+| `create_scaler.py` | Fits & saves scaler (`scaler.pkl`). |
+| `predict_matches.py` | Predicts outcomes of `new_matches.xlsx` → saves results. |
+| `pattern_predict.py` | Pattern-matching prediction method. |
+| `RawPrediction.xlsx` | Historical raw predictions. |
+| `new_matches.xlsx` | Input new matches for prediction. |
+| `enhanced_dataset.csv` | Engineered dataset used for training. |
+| `football_model_optimized.pkl` | Optimized trained model. |
+| `scaler.pkl` | Saved data scaler. |
 
-predict_matches.py → Predicts outcomes of new_matches.xlsx → saves results.
+---
 
-pattern_predict.py → Pattern-matching prediction method.
-
-RawPrediction.xlsx → Historical raw predictions.
-
-new_matches.xlsx → Input new matches for prediction.
-
-enhanced_dataset.csv → Engineered dataset used for training.
-
-football_model_optimized.pkl → Optimized trained model.
-
-scaler.pkl → Saved data scaler.
-
-🚀 Future Improvements
-Automate data scraping (bypass Cloudflare).
-
-Expand dataset across more leagues/seasons.
-
-Try deep learning (e.g. LSTMs for sequence data).
-
-Build a web dashboard for interactive predictions.
+## 🚀 Future Improvements
+- Automate data scraping (bypass Cloudflare).  
+- Expand dataset across more leagues/seasons.  
+- Try deep learning (e.g. LSTMs for sequence data).  
+- Build a web dashboard for interactive predictions.
